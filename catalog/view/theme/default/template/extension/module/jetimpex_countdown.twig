@@ -1,0 +1,128 @@
+<div class="box countdown">
+	<div class="box-heading">
+		<h3>{{ heading_title }}</h3>
+	</div>
+	<div class="box-content">
+		{% if (type == 1) %}
+			<div id="radial-countdown{{ module }}" class="radial-countdown" data-date="{{ date }}"></div>
+		{% else %}
+			<div id="countdown{{ module }}" class="countdown-simple" data-date="{{ date }}">
+				<div class="cell"><span class="number days"></span><b>{{ days_title }}</b></div>
+				<div class="cell"><span class="number hours"></span><b>{{ hours_title }}</b></div>
+				<div class="cell"><span class="number minutes"></span><b>{{ minutes_title }}</b></div>
+				<div class="cell"><span class="number seconds"></span><b>{{ seconds_title }}</b></div>
+			</div>
+		{% endif %}
+		{% if (description) %}
+			<div class="countdown_description">{{ description }}</div>
+		{% endif %}
+	</div>
+</div>
+
+{% if (type == 1) %}
+	<script>
+		var obj = jQuery("#radial-countdown{{ module }}"),
+		timesettings = {
+			Days: {
+				color: '{{ days_color }}',
+				show: {{ show_days }},
+				text: '{{ days_title }}'
+			},
+			Hours: {
+				color: '{{ hours_color }}',
+				show: {{ show_hours }},
+				text: '{{ hours_title }}'
+			},
+			Minutes: {
+				color: '{{ minutes_color }}',
+				show: {{ show_minutes }},
+				text: '{{ minutes_title }}'
+			},
+			Seconds: {
+				color: '{{ seconds_color }}',
+				show: {{ show_seconds }},
+				text: '{{ seconds_title }}'
+			}
+		},
+		settings = {
+			animation: '{{ animation }}',
+			direction: '{{ direction }}',
+			circle_bg_color: '{{ bg_color }}',
+			fg_width: {{ fg_width }},
+			bg_width: {{ bg_width }},
+			count_past_zero: false,
+			time: timesettings
+		};
+		jQuery(document).ready(function () {
+
+			obj.TimeCircles(settings);
+		});
+
+		{% if (count > 2) %}
+		jQuery(window).on('resize', function (event) {
+			{% if (count > 3) %}
+			if (jQuery(window).width() > 767) {
+				obj.TimeCircles({
+					time: {
+						Minutes: {show: true},
+						Seconds: {show: true}
+					}
+				}).rebuild();
+			} else if (jQuery(window).width() > 479) {
+				obj.TimeCircles({
+					time: {
+						Minutes: {show: true},
+						Seconds: {show: false}
+					}
+				}).rebuild();
+			} else {
+				obj.TimeCircles({
+					time: {
+						Minutes: {show: false},
+						Seconds: {show: false}
+					}
+				}).rebuild();
+			}
+			{% else %}
+			if (jQuery(window).width() > 479) {
+				obj.TimeCircles({
+					time: {
+						{% if (show_seconds == 'true') %}
+						Seconds: {show: true}
+						{% else %}
+						Minutes: {show: true}
+						{% endif %}
+					}
+				}).rebuild();
+			} else {
+				obj.TimeCircles({
+					time: {
+						{% if (show_seconds == 'true') %}
+						Seconds: {show: false}
+						{% else %}
+						Minutes: {show: false}
+						{% endif %}
+					}
+				}).rebuild();
+			}
+			{% endif %}
+		});
+		{% else %}
+		jQuery(window).on('resize', function (event) {
+			obj.TimeCircles().rebuild();
+		});
+		{% endif %}
+	</script>
+{% else %}
+	<script>
+		;(function($){
+			var obj = $('#countdown{{ module }}');
+			obj.countdown(obj.data('date'), function(event){
+				$(this).find('.days').html(event.strftime('%D'));
+				$(this).find('.hours').html(event.strftime('%H'));
+				$(this).find('.minutes').html(event.strftime('%M'));
+				$(this).find('.seconds').html(event.strftime('%S'));
+			});
+		})(jQuery)
+	</script>
+{% endif %}

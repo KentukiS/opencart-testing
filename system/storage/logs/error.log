@@ -1,0 +1,7 @@
+2022-09-18 20:16:22 - PHP Notice:  Undefined index: firstname in /home/kentukis/kentukissite.com/www/catalog/controller/account/createnews.php on line 156
+2022-09-18 20:16:22 - PHP Notice:  Undefined index: lastname in /home/kentukis/kentukissite.com/www/catalog/controller/account/createnews.php on line 160
+2022-09-18 20:16:22 - PHP Notice:  Undefined index: email in /home/kentukis/kentukissite.com/www/catalog/controller/account/createnews.php on line 164
+2022-09-18 20:16:22 - PHP Notice:  Undefined index: email in /home/kentukis/kentukissite.com/www/catalog/controller/account/createnews.php on line 164
+2022-09-18 20:16:22 - PHP Notice:  Undefined index: email in /home/kentukis/kentukissite.com/www/catalog/controller/account/createnews.php on line 168
+2022-09-18 20:16:22 - PHP Notice:  Undefined index: email in /home/kentukis/kentukissite.com/www/catalog/controller/account/createnews.php on line 168
+2022-09-18 20:16:22 - PHP Notice:  Undefined index: telephone in /home/kentukis/kentukissite.com/www/catalog/controller/account/createnews.php on line 172

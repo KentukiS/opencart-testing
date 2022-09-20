@@ -1,0 +1,9 @@
+<div class="address-block" data-match-height="items-f">
+	<div class="box-content footer_box">
+		<address>
+			<p><i class="material-design-map103"></i><a class="footer-link" href="//www.google.com/maps/?q={{ geocode ? str_replace(' ', '+', geocode) : str_replace(' ', '+', strip_tags(address)) }}" target="_blank">{{ address }}</a></p>
+			<p><i class="material-design-phone370"></i><a class="footer-link" href="callto:{{ telephone }}">{{ telephone }}</a></p>
+			<p><i class="material-design-black402"></i><a href="mailto:{{ email }} ">{{ email }}</a></p>
+		</address>
+	</div>
+</div>

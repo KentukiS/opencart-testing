@@ -1,0 +1,43 @@
+{{ header }}
+<div id="account-edit" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  {% if error_warning %}
+  <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+  {% endif %}
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+        Title: <input type="text" name="title" value="{{ title }}">
+        Text: <textarea name="text">{{ text }}</textarea>
+        Short Description: <textarea name="description">{{ description }}</textarea>
+        File: <input name="myFile" type="file">
+        <img src="{{image}}">
+      </br>Active:
+      {% if active == 1 %}
+      <input type="checkbox" name="active" value="1" style="display: block;" checked="checked">
+      {% else %}
+      <input type="checkbox" name="active" value="1" style="display: block;" >
+      {% endif %}
+      </br>
+
+      <input type="submit" value="save" name="save">
+      {% if deleteBut %}
+      <input type="submit" name="delete" value="delete" style="color:red;"></br>
+      {% endif %}
+      </form>
+      <div class="text-danger">{{ fields_error }}</div>
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

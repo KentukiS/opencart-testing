@@ -1,0 +1,16 @@
+/* CSS Document */
+.swiper-viewport {
+	z-index: 1;
+	width: 100%;
+	position: relative;
+	overflow: visible;
+}
+/* OpenCart Code */
+.swiper-container {
+	direction: ltr !important;
+}
+
+/* Desktop */
+@media (min-width: 768px){
+
+}

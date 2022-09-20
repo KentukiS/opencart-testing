@@ -1,0 +1,38 @@
+<div class="demo-footer-img">
+	<div class="container">
+		<a href="https://www.templatemonster.com/opencart-templates/auto-parts-responsive-opencart-template-65320.html" class="demo-img"><img src="image/catalog/demo/Electromo_big.jpg" alt=""></a>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		{% if footer_1 %}
+			<div class="footer_modules">{{ footer_1 }}</div>
+		{% endif %}
+		{% if footer_2 %}
+			<div class="footer_modules">{{ footer_2 }}</div>
+		{% endif %}
+		{% if footer_3 %}
+			<div class="footer_modules">{{ footer_3 }}</div>
+		{% endif %}
+		{% if footer_4 %}
+			<div class="footer_modules">{{ footer_4 }}</div>
+		{% endif %}
+		<div class="copyright">
+			<p>{{ powered }}. Design by <a class="zemez" href="https://zemez.io"> Zemez</a></p><!-- [[%FOOTER_LINK]] -->
+		</div>
+	</div>
+</footer>
+<div class="ajax-overlay"></div>
+<div class="ajax-quickview-overlay">
+	<span class="ajax-quickview-overlay__preloader"></span>
+</div>
+</div>
+{% for script in scripts %}
+	<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<script src="catalog/view/theme/{{ theme_path }}/js/device.min.js" type="text/javascript"></script>
+<script src="catalog/view/theme/{{ theme_path }}/js/livesearch.min.js" type="text/javascript"></script>
+<script src="catalog/view/theme/{{ theme_path }}/js/common.js" type="text/javascript"></script>
+<script src="catalog/view/theme/{{ theme_path }}/js/script.js" type="text/javascript"></script>
+</body>
+</html>
